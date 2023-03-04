@@ -49,7 +49,6 @@ const generateHtml = (data) => {
 const getAllTestimonials = async () => {
   testLists.innerHTML = '';
   const response = await testimonials;
-  console.log(response);
   response.map((index) => (testLists.innerHTML += generateHtml(index)));
 };
 
