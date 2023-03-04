@@ -63,7 +63,7 @@ const filterTestimonials = async (elementValue) => {
   if (elementValue.toLowerCase() == 'all') {
     getAllTestimonials();
   } else if (filteredTesti.length === 0) {
-    testLists.innerHTML = '<h2>Data not found!</h2>';
+    testLists.innerHTML = `<h2>Couldn't find ${elementValue} Star Rating</h2>`;
   } else {
     console.log(filteredTesti);
     filteredTesti.map((index) => (testLists.innerHTML += generateHtml(index)));
