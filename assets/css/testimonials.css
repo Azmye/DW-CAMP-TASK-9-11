@@ -67,7 +67,7 @@
 }
 
 .testimonial-item .body li {
-  color: rgb(0, 0, 0);
+  color: rgb(221, 221, 49);
 }
 
 .btn-filters {
@@ -83,6 +83,10 @@
   padding: 6px 14px;
   border: none;
   cursor: pointer;
+}
+
+.btn-filters button:first-child:hover {
+  color: yellow;
 }
 
 .btn-filters button:hover > i {
