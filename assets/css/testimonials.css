@@ -122,17 +122,17 @@
 
 @media only screen and (max-width: 512px) {
   .testimonial-item {
-    width: 100%;
+    width: 50%;
     padding: 10px;
   }
 
   .testimonial-item .head img {
-    height: auto;
+    height: 120px;
     object-fit: cover;
   }
 
   .testimonial-item p {
-    font-size: 14px;
+    font-size: 12px;
     margin-bottom: 7px;
   }
 
