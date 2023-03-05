@@ -46,31 +46,72 @@ const generateHtml = (data) => {
   return html;
 };
 
-const getAllTestimonials = async () => {
+// const getAllTestimonials = async () => {
+//   testLists.innerHTML = '';
+//   const response = await testimonials;
+//   response.map((index) => (testLists.innerHTML += generateHtml(index)));
+// };
+
+// getAllTestimonials();
+
+// const filterTestimonials = async (elementValue) => {
+//   testLists.innerHTML = '';
+//   const response = await testimonials;
+
+//   let filteredTesti = response.filter((index) => index.rate === Number(elementValue));
+
+//   if (elementValue.toLowerCase() == 'all') {
+//     getAllTestimonials();
+//   } else if (filteredTesti.length === 0) {
+//     testLists.innerHTML = `<h2>Couldn't find ${elementValue} Star Rating</h2>`;
+//   } else {
+//     filteredTesti.map((index) => (testLists.innerHTML += generateHtml(index)));
+//   }
+// };
+
+// buttonFilters.forEach((element) => {
+//   element.addEventListener('click', () => {
+//     filterTestimonials(element.textContent);
+//   });
+// });
+
+const filterTestimonials = (buttonValue) => {
+  testimonials
+    .then((response) => {
+      let filtered = response.filter((index) => index.rate == buttonValue);
+      return filtered;
+    })
+    .then((response) => {
+      updateUI(response);
+    })
+    .catch((err) => console.log(err));
+};
+
+const updateUI = (data) => {
   testLists.innerHTML = '';
-  const response = await testimonials;
-  response.map((index) => (testLists.innerHTML += generateHtml(index)));
+  if (data.length <= 0) {
+    testLists.innerHTML = `<h2>Data Not Found!</h2>`;
+  } else {
+    data.map((index) => (testLists.innerHTML += generateHtml(index)));
+  }
+};
+
+const getAllTestimonials = () => {
+  testimonials
+    .then((response) => {
+      updateUI(response);
+    })
+    .catch((err) => console.log(err));
 };
 
 getAllTestimonials();
 
-const filterTestimonials = async (elementValue) => {
-  testLists.innerHTML = '';
-  const response = await testimonials;
-
-  let filteredTesti = response.filter((index) => index.rate === Number(elementValue));
-
-  if (elementValue.toLowerCase() == 'all') {
-    getAllTestimonials();
-  } else if (filteredTesti.length === 0) {
-    testLists.innerHTML = `<h2>Couldn't find ${elementValue} Star Rating</h2>`;
-  } else {
-    filteredTesti.map((index) => (testLists.innerHTML += generateHtml(index)));
-  }
-};
-
 buttonFilters.forEach((element) => {
   element.addEventListener('click', () => {
-    filterTestimonials(element.textContent);
+    if (element.textContent.toLowerCase() === 'all') {
+      getAllTestimonials();
+    } else {
+      filterTestimonials(element.textContent);
+    }
   });
 });
