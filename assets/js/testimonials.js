@@ -46,35 +46,6 @@ const generateHtml = (data) => {
   return html;
 };
 
-// const getAllTestimonials = async () => {
-//   testLists.innerHTML = '';
-//   const response = await testimonials;
-//   response.map((index) => (testLists.innerHTML += generateHtml(index)));
-// };
-
-// getAllTestimonials();
-
-// const filterTestimonials = async (elementValue) => {
-//   testLists.innerHTML = '';
-//   const response = await testimonials;
-
-//   let filteredTesti = response.filter((index) => index.rate === Number(elementValue));
-
-//   if (elementValue.toLowerCase() == 'all') {
-//     getAllTestimonials();
-//   } else if (filteredTesti.length === 0) {
-//     testLists.innerHTML = `<h2>Couldn't find ${elementValue} Star Rating</h2>`;
-//   } else {
-//     filteredTesti.map((index) => (testLists.innerHTML += generateHtml(index)));
-//   }
-// };
-
-// buttonFilters.forEach((element) => {
-//   element.addEventListener('click', () => {
-//     filterTestimonials(element.textContent);
-//   });
-// });
-
 const filterTestimonials = (buttonValue) => {
   testimonials
     .then((response) => {
